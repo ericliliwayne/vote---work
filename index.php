@@ -8,34 +8,34 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <div class="header">
+    <div class="top">
         <?php
             include "./block/header.php";
         ?>
     </div>
 
-    <div class="menu">
-        <!-- <?php
-            include "./block/headerindex.php";
-        ?> -->
-    </div>
-
     <div class="side">
-    <!-- <?php
+    <?php
             include "./block/sidebar.php";
-        ?> -->
+        ?>
     </div>
 
-    <div class="container">
-    <!-- <?php
-            include "./membercenter.php";
-        ?> -->
-    </div>
+    <section>
+        <div class="menu">
+            <?php
+                include "./block/headerindex.php";
+            ?>
+        </div>
+
+        <div class="container">
+            A
+        </div>
+    </section>
 
     <div class="footer">
-    <!-- <?php
+    <?php
             include "./block/footer.php";
-        ?> -->
+        ?>
     </div>
 </body>
 </html>

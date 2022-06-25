@@ -7,6 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    B
+<div class="top">
+        <?php
+            include "./block/header.php";
+        ?>
+    </div>
+
+    <div class="side">
+    <?php
+            include "./block/sidebar.php";
+        ?>
+    </div>
+    
+    <section>
+        <div class="menu">
+            <?php
+                include "./block/headerindex.php";
+            ?>
+        </div>
+
+        <div class="container">
+            
+        </div>
+    </section>
+
+    <div class="footer">
+    <?php
+            include "./block/footer.php";
+        ?>
+    </div>
 </body>
 </html>
