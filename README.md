@@ -52,16 +52,54 @@
 5. 待補充
 
 5. 設計相關資料表
-    * 資料表一(資料表名)
+    * 資料表一(users)
         |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
         |---|---|---|---|---|---|
-        |||||||
-        |||||||
-    * 資料表二(資料表名)
+        |id|int|V||V||
+        |acc|varchar||||帳號|
+        |pw|varchar||||密碼|
+        |name|varchar||||性名|
+        |gender|tinyint||1||性別|
+        |birthday|date||||生日|
+        |email|varchar||||電郵|
+        |education|varchar||||學歷|
+        |pwnote|text||||密碼備忘錄|
+        |creattime|datetime||current_timestamp()||建立時間|
+
+    * 資料表二(votes)
         |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
         |---|---|---|---|---|---|
-        |||||||
-        |||||||
+        |id|int|V||V||
+        |votename|varchar||||投票項目名稱|
+        |categoryid|int||||類別ID|
+        |multiple|tinyint||1||單選|
+        |multiples|tinyint||0||複選|
+        |start|datetime||||開始日期|
+        |end|datetime||||截止日期|
+        |total|int||||投票總人數|
+
+    * 資料表三(voted)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |---|---|---|---|---|---|
+        |id|int|V||V||
+        |usersid|int||||使用者ID|
+        |votesid|int||||投票項目ID|
+        |optionsid|int||||選項ID|
+        |votetime|datetime||current_timestamp()	||投票時間|
+
+    * 資料表四(options)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |---|---|---|---|---|---|
+        |id|int|V||V||
+        |options|varchar||||選項名稱|
+        |voteid|int||||對應投票項目ID值|
+        |total|int||||該選項點擊數|
+
+    * 資料表五(categorys)
+        |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
+        |---|---|---|---|---|---|
+        |id|int|V||V||
+        |categorys|varchar||||類別名稱|
     
 3. 請充分運用學到的各項網頁知識來美化這個投票系統的畫面
     * html標籤的應用(語意標籤、表單、表格、分隔線、標頭..etc)
