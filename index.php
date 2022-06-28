@@ -28,7 +28,9 @@
         </div>
 
         <div class="container">
-            A
+        <?php
+            include "./front/votelist.php";
+        ?>
         </div>
     </section>
 

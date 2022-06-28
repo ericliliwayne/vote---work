@@ -77,6 +77,7 @@
         |start|datetime||||開始日期|
         |end|datetime||||截止日期|
         |total|int||||投票總人數|
+        |show|tinyint||1||顯示開啟或關閉|
 
     * 資料表三(voted)
         |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
