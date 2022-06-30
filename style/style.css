@@ -50,16 +50,86 @@ section{
     width: 100%;
     height: 95%;
     background-color: cornflowerblue;
+
 }
 
 .card{
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: start;
     align-content: space-around;
+    width: 100%;
+    height: 100%;
 }
 
 .voteslist{
-    width: 30%;
-    height: 30%;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 25% 0 25% 0;
+    width: 25vw;
+    height: 25vh;
+    padding: 5%;
+    margin: 0 30px auto;
+    box-shadow: 7px 7px 2px black;
+}
+
+.voteslist,a{
+    text-decoration: none;
+}
+
+.voteslist:hover{
+    box-shadow: -7px -7px 2px black;
+}
+
+.colora{
+    border: 0.7rem outset green;
+    background-color: lightgreen;
+}
+.colorb{
+    border: 0.7rem outset pink;
+    background-color: lightpink;
+}
+.colorc{
+    border: 0.7rem outset cyan;
+    background-color: lightcyan;
+}
+.colord{
+    border: 0.7rem outset steelblue;
+    background-color: lightsteelblue;
+}
+.colore{
+    border: 0.7rem outset goldenrod;
+    background-color: lightgoldenrodyellow;
+}
+.colorf{
+    border: 0.7rem outset gray;
+    background-color: lightgray;
+}
+
+.colora:hover{
+    border: 0.7rem inset green;
+}
+.colorb:hover{
+    border: 0.7rem inset pink;
+}
+.colorc:hover{
+    border: 0.7rem inset cyan;
+}
+.colord:hover{
+    border: 0.7rem inset steelblue;
+}
+.colore:hover{
+    border: 0.7rem inset goldenrod;
+}
+.colorf:hover{
+    border: 0.7rem inset gray;
+}
+
+.votestitle{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }

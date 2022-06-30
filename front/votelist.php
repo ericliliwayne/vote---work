@@ -5,12 +5,35 @@
         <?php
             //使用all()函式來取得資料表votes中的所有資料，請參考functionall.php中的函式all($table,...$arg)
             $subjects=all('votes');
-
+            $category=all('categorys');
+            
             //使用迴圈將每一筆資料的內容顯示在畫面上
             foreach($subjects as $subject){
                 echo "<a href='?do=vote_result&id={$subject['id']}'>";
-                echo "<div class='voteslist'>";
-                echo "<div>投票主題 : {$subject['votename']}</div>";
+                //判定類ID來賦與對應的CSS美化
+                if($subject['categoryid']==1){
+                    $border = 'colora';
+                    $string = "生活";
+                }else if($subject['categoryid']==2){
+                    $border = 'colorb';
+                    $string = "經濟";
+                }else if($subject['categoryid']==3){
+                    $border = 'colorc';
+                    $string = "政治";
+                }else if($subject['categoryid']==4){
+                    $border = 'colord';
+                    $string = "科技";
+                }else if($subject['categoryid']==5){
+                    $border = 'colore';
+                    $string = "動漫";
+                }else if($subject['categoryid']==6){
+                    $border = 'colorf';
+                    $string = "其他";
+                }
+                //
+                echo "<div class='voteslist {$border}'>";
+                echo "<div class='votestitle'>{$subject['votename']}</div>";
+                echo "<div>類別 : ".$string."</div>";
                 if($subject['multiple']==0){
                     echo "<div class='text-center'>單/複選題 : 單選題</div>";
                 }else{
