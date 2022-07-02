@@ -1,3 +1,6 @@
+<?php
+    include_once "./other/functionall.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +32,7 @@
 
         <div class="container">
         <?php
-            include "./front/votelist.php";
+            include "./back/votescenter.php";
         ?>
         </div>
     </section>

@@ -35,9 +35,9 @@
                 echo "<div class='votestitle'>{$subject['votename']}</div>";
                 echo "<div>類別 : ".$string."</div>";
                 if($subject['multiple']==0){
-                    echo "<div class='text-center'>單/複選題 : 單選題</div>";
-                }else{
                     echo "<div class='text-center'>單/複選題 : 複選題</div>";
+                }else{
+                    echo "<div class='text-center'>單/複選題 : 單選題</div>";
                 }
                 echo "<div class='text-center'>";
                 echo "投票期間為 : ".$subject['start']. " ~ ".$subject['end'];
