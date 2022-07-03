@@ -92,7 +92,7 @@
                 }
                 echo "<td>";
 ?>
-                <button class="edit">修改</button>
+                <button class="edit"><a href="index.php?do=editvote.php">修改</a></button>
                 <button class="del">刪除</button>
 <?php
                 echo "</td>";
@@ -100,3 +100,5 @@
             }
             echo "</table>";
         ?>
+
+        <button><a href="index.php">返回首頁</a></button>
