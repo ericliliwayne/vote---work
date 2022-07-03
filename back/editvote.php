@@ -1,30 +1,33 @@
 <?php
+// include_once "../other/functionall.php";
 $id=$_GET['id'];
-$subject=find('subjects',$id);
-$options=all('options',['subject_id'=>$id]);
+$subject=find('votes',$id);
+$options=all('options',['voteid'=>$id]);
 ?>
 <script src="../style/jquery.js"></script>
 <script>
-    function add(){
-        $(document).ready(function() {
-        let addoption = $("#new"); //Add button ID
-        let opt=`<div><label>選項:</label><input type="text" name="option[]"><button id='del'>-</button></div>`;
-        $(addoption).click(function (){ //on add input button click
-        $('#options').append(opt);
-        });
-    })
-    };
-    function del(){
-        $("#del").click(function(e){ //user click on remove text
-        $(this).parent('#options').remove(); //刪除選項
-        });
-    };
+    $(document).ready(function() {
+        let countNum = 0;
+        let add = $('#new');
+        let opt=`<div><label>選項:</label><input type="text" name="option[]"><input type="button" value="刪除選項" id="del"></div>`;
+        $('#new').click(function add() {
+            countNum += 1;
+            if(countNum<=20){
+                $('#options').append(opt);
+            }
+        
+    });
+        $('#del').click(function del() {
+        $('.opt').remove();
+    });
+    });
+    
 </script>
 <h1>編輯投票</h1>
 <form action="editvote.php" method="post">
     <div>
         <label for="subject">投票主題：</label>
-        <input type="text" name="subject" id="subject" value="<?=$subject['subject'];?>">
+        <input type="text" name="subject" id="subject" value="<?=$subject['votename'];?>">
         <input type="button" value="新增選項" id="new">
         <input type="hidden" name="subject_id" value="<?=$subject['id'];?>">
     </div>
@@ -38,8 +41,8 @@ $options=all('options',['subject_id'=>$id]);
         <?php 
         foreach($options as $option){
         ?>
-        <div>
-            <label>選項:</label><input type="text" name="option[<?=$options['id'];?>]" value="<?=$options['option'];?>">
+        <div class="opt">
+            <label>選項:</label><input type="text" name="option[<?=$option['id'];?>]" value="<?=$option['options'];?>"><input type="button" value="刪除選項" id="del">
         </div>
         <?php 
         }
