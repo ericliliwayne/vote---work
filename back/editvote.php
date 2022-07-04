@@ -9,16 +9,16 @@ $options=all('options',['voteid'=>$id]);
     $(document).ready(function() {
         let countNum = 0;
         let add = $('#new');
-        let opt=`<div class="opt"><label>選項:</label><input type="text" name="option[]"><input type="button" value="刪除選項" id="del"></div>`;
+        let opt=`<div class="opt"><label>選項:</label><input type="text" name="option[]">`;
         $('#new').click(function () {
             countNum += 1;
             if(countNum<=20){
                 $('#options').append(opt);
             }
-        
+            
     });
-        $('#del').click(function () {
-        $('.opt').removechild();
+        $('.opt').click(function () {
+        $(this).remove();
     });
     });
     
@@ -42,7 +42,7 @@ $options=all('options',['voteid'=>$id]);
         foreach($options as $option){
         ?>
         <div class="opt">
-            <label>選項:</label><input type="text" name="option[<?=$option['id'];?>]" value="<?=$option['options'];?>"><input type="button" value="刪除選項" id="del">
+            <label>選項:</label><input type="text" name="option[<?=$option['id'];?>]" value="<?=$option['options'];?>">
         </div>
         <?php 
         }

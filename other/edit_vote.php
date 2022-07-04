@@ -7,7 +7,6 @@ $new_subject=$_POST['votename'];
 $new_endtime=$_POST['end'];
 $oc=$_POST['show'];
 $subject=find('votes',$subject_id);
-$option=find('categorys',$subject_id);
 
 $subject['votename']=$new_subject;
 $subject['multiples']=$_POST['multiples'];
@@ -17,7 +16,7 @@ $subject['show']=$oc;
 //使用save()函式把投票主題存至資料表votes中
 save('votes',$subject);
 
-$opts=all("options",['id'=>$subject_id]);
+$opts=all("options",['voteid'=>$subject_id]);
 
     foreach($_POST['option'] as $key => $opt){
          $exist=false;
@@ -28,16 +27,20 @@ $opts=all("options",['id'=>$subject_id]);
             }
         }
 
+        
         if($exist){
             //更新選項
-            $ot['option']=$opt;
+            $ot['options']=$opt;
             save("options",$ot);
         }else{
             //新增選項
-            $add_option=[
-                'option'=>$opt,
-                'id'=>$subject_id
-            ];
+            if($_POST['option']!=''){
+                $add_option=[
+                    'options'=>$opt,
+                    'voteid'=>$subject_id
+                ];
+            }
+            
             save("options",$add_option);
         }
     }
