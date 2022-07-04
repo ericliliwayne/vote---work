@@ -70,10 +70,10 @@
                 }
                 //
                 echo "<td class='center2'>".$string."</td>";
-                if($subject['multiple']==0){
-                    echo "<td class='center2'>複選題</td>";
-                }else{
+                if($subject['multiples']==0){
                     echo "<td class='center2'>單選題</td>";
+                }else{
+                    echo "<td class='center2'>複選題</td>";
                 }
                 echo "<td>".$subject['start']. " ~ ".$subject['end']."</td>";
                     $today=strtotime("now");
