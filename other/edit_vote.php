@@ -1,4 +1,3 @@
-<h1>123</h1>
 <?php
 include_once "../other/functionall.php";
 //接收來自表單傳來的投票主題文字內容
@@ -49,5 +48,5 @@ $opts=all("options",['voteid'=>$subject_id]);
 
 
 //使用to()函式來取代header，請參考base.php中的函式to($url)
-//to('../back.php');
+to('../index.php');
 ?>

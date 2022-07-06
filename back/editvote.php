@@ -6,30 +6,14 @@ $category=all('categorys');
 $options=all('options',['voteid'=>$id]);
 ?>
 <script src="../style/jquery.js"></script>
-<script>
-    $(document).ready(function() {
-        let countNum = 0;
-        let add = $('#new');
-        let opt=`<div class="opt"><label>選項:</label><input type="text" name="option[]">`;
-        $('#new').click(function () {
-            countNum += 1;
-            if(countNum<=20){
-                $('#options').append(opt);
-            }
-            
-    });
-        $('.opt').click(function () {
-        $(this).remove();
-    });
-    });
-    
-</script>
 <h1>編輯投票</h1>
 <form action="./other/edit_vote.php" method="post">
     <div>
         <label for="subject">投票主題：</label>
         <input type="text" name="votename" id="votename" value="<?=$subject['votename'];?>">
         <input type="button" value="新增選項" id="new">
+        <input type="button" value="刪除新增選項" id="del">
+        <!-- <input type="button" value="選項全部刪除" id="del2"> -->
         <input type="hidden" name="id" value="<?=$subject['id'];?>">
     </div>
     <div id="selector">
@@ -58,7 +42,7 @@ $options=all('options',['voteid'=>$id]);
         <?php 
         foreach($options as $option){
         ?>
-        <div class="opt">
+        <div class="opt1">
             <label>選項:</label><input type="text" name="option[<?=$option['id'];?>]" value="<?=$option['options'];?>">
         </div>
         <?php 
@@ -69,7 +53,27 @@ $options=all('options',['voteid'=>$id]);
             <label for="enddate">結束時間:</label>
             <input type="datetime-local" name="end" id="enddate" value="<?=$subject['end'];?>">
         </div>
-        
+        <script>
+    $(document).ready(function() {
+        let countNum = 0;
+        let add = $('#new');
+        let opt=`<div class="opt"><label>選項:</label><input type="text" name="option[]"></div>`;
+        $('#new').click(function () {
+            countNum += 1;
+            if(countNum<=20){
+                $('#options').append(opt);
+            }
+    });
+        $('#del').click(function () {
+            $('.opt').remove();
+    });
+    //     $('#del2').click(function () {
+    //         $('.opt').remove();
+    //         $('.opt1').remove();
+    // });
+    });
+    
+</script>
         <label for="show">顯示投票項目開啟或關閉:</label>
         <input type="radio" name="show" value="1" <?=($subject['show']==1)?'checked':'';?>>
         <label>開啟</label>

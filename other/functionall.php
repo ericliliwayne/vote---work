@@ -86,7 +86,7 @@ function find($table,$arg){
     
             }
     
-            $sql.=implode(" AND " ,$tmp);
+            $sql.=implode(" , " ,$tmp);
     
         }else{
     
