@@ -2,6 +2,7 @@
 //include_once "../other/functionall.php";
 $id=$_GET['id'];
 $subject=find('votes',$id);
+$category=all('categorys');
 $options=all('options',['voteid'=>$id]);
 ?>
 <script src="../style/jquery.js"></script>
@@ -35,8 +36,24 @@ $options=all('options',['voteid'=>$id]);
         <input type="radio" name="multiples" value="0" <?=($subject['multiples']==0)?'checked':'';?>>
         <label>單選</label>
         <input type="radio" name="multiples" value="1" <?=($subject['multiples']==1)?'checked':'';?>>
-        <label>複選</label>
+        <label>複選</label><br>
+        <label>類別:</label>
+        <select name="category" id="category">
+            <?php
+                //使用迴圈顯示所有的分類資料
+                foreach($category as $type){
+                //根據主題資料中的id來判斷主題所屬的分類
+                    $selected=($subject['categoryid']==$type['id'])?'selected':'';
+
+                    //在選單中加上$selected來讓下拉選單可以直接顯示主題的分類
+                    echo "<option value='{$type['id']}' $selected>";
+                    echo $type['categorys'];
+                    echo "</option>";
+            }
+            ?>
+        </select>
     </div>
+
     <div id="options">
         <?php 
         foreach($options as $option){

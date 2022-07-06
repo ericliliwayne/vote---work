@@ -5,11 +5,13 @@ include_once "../other/functionall.php";
 $subject_id=$_POST['id'];
 $new_subject=$_POST['votename'];
 $new_endtime=$_POST['end'];
+$new_type=$_POST['category'];
 $oc=$_POST['show'];
 $subject=find('votes',$subject_id);
 
 $subject['votename']=$new_subject;
 $subject['multiples']=$_POST['multiples'];
+$subject['categoryid']=$new_type;
 $subject['end']=$new_endtime;
 $subject['show']=$oc;
 //echo $sql;
