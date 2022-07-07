@@ -1,5 +1,5 @@
 <?php
-include_once "../other/functionall.php";
+include_once "functionall.php";
 //接收來自表單傳來的投票主題文字內容
 $new_subject=$_POST['votename'];
 $new_endtime=$_POST['end'];
@@ -16,6 +16,8 @@ $add_subject=[
     'show'=>$oc,
 ];
 
+
+
 //echo $sql;
 //使用save()函式把投票主題存至資料表votes中
 //save('votes',$add_subject);
@@ -25,8 +27,8 @@ $id=find('votes',['votename'=>$new_subject])['id'];
 echo $id;
 
 //判斷表單資料有沒有option這個項目，如果有，則使用迴圈把選項一個一個取出
-if(isset($_POST['option[]'])){
-    foreach($_POST['option[]'] as $opt){
+if(isset($_POST['option'])){
+    foreach($_POST['option'] as $opt){
         if($opt != ""){
             //如果選項的文字內容不是空的 ,則建立資料陣列,並將主題對應的id代入
             $add_option=[
