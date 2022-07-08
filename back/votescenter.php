@@ -93,7 +93,7 @@
                 echo "<td>";
 ?>
                 <button class="edit" onclick="location.href='?do=editvote&id=<?=$subject['id'];?>'">修改</button>
-                <button class="del">刪除</button>
+                <button class="del" onclick="location.href='?do=delvote&id=<?=$subject['id'];?>'">刪除</button>
 <?php
                 echo "</td>";
                 echo "</tr>";
