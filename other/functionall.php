@@ -134,7 +134,7 @@ function math($table,$math,$col,...$arg){
     
             }
     
-            $sql.=" WHERE " . implode(" AND " ,$tmp);
+            $sql.=" WHERE " . implode("," ,$tmp);
     
         }
     

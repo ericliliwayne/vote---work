@@ -39,7 +39,7 @@
         if(isset($file) && file_exists($file)){
             include $file;
         }else{
-            include "./back/votescenter.php";
+            include "./front/votelist.php";
         }
             
         ?>
