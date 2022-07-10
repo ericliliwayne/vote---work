@@ -65,7 +65,7 @@
             
             //使用迴圈將每一筆資料的內容顯示在畫面上
             foreach($subjects as $subject){
-                echo "<a href='?do=voltresult&id={$subject['id']}'>";
+                echo "<a href='?do=voteresult&id={$subject['id']}'>";
                 //判定類ID來賦與對應的CSS美化
                 if($subject['categoryid']==1){
                     $border = 'colora';

@@ -68,6 +68,6 @@ if (isset($_POST['option'])) {
 }
 
 //將頁面導回前台的投票結果頁,記得在網址中代入該投票的主題的id
-to("../index.php?do=vote_result&id={$option['voteid']}");
+to("../index.php?do=voteresult&id={$option['voteid']}");
 
 ?>
