@@ -55,12 +55,16 @@ $options = all('options', ['voteid' => $id]);
     <input type="button" id="new" value="新增欄位" />
     <script>
         // 動態新增欄位id編號預設值
+        let num = 1;
         let txtId = 1;
         
         // 動態新增欄位
         $("#new").click(function () {
-            $("#showBlock").append('<div id="div' + txtId + '">欄位: <input type="text" name="option[]" /> <input type="button" value="刪除" onclick="deltxt('+txtId+')"></div>');
-            txtId++;
+            if(num<10){ //選項最多10項
+                $("#showBlock").append('<div id="div' + txtId + '">欄位: <input type="text" name="option[]" /> <input type="button" value="刪除" onclick="deltxt('+txtId+')"></div>');
+                txtId++;
+                num ++;
+            }
         });
       
         // 動態刪除欄位
