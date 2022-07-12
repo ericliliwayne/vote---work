@@ -8,6 +8,7 @@ foreach($user as $a){
     $row_acc =  $a['acc'];
     $row_name =  $a['name'];
 }
+
 if($acc == $row_acc && $pw == $row_pw){
     $_SESSION["name"] = $a['name'] ;
     to("../?do=membercenter");

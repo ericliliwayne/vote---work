@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($_SESSION['name'])){
+    header("location:./index.php");
+}else{
+?>
 <style>
     table{
         border: 2px solid black;
@@ -102,3 +106,6 @@
         ?>
 
         <button><a href="index.php">返回首頁</a></button>
+        <?php
+        }
+        ?>

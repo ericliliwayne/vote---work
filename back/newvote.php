@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['name'])){
+    header("location:./index.php");
+}else{
+?>
 <style>
     .new{
         width: 30%;
@@ -88,3 +93,6 @@ $options = all('options');
 
 </form>
 </div>
+<?php
+}
+?>

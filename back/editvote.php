@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['name'])){
+    header("location:./index.php");
+}else{
+?>
 <style>
     .edit{
         width: 30%;
@@ -104,3 +109,6 @@ $options = all('options', ['voteid' => $id]);
 
 </form>
 </div>
+<?php
+}
+?>

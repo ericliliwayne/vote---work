@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['name'])){
+    header("location:./index.php");
+}else{
+?>
 <style>
     body{
         display: flex;
@@ -12,6 +17,7 @@
         width:100%;
         height:100%;
         padding: 10px;
+        background-color: rgb(255, 255, 255,0.7);
     }
     #go{
         margin: -12px auto;
@@ -72,13 +78,16 @@ $subject=find("votes",$_GET['id']);
             $('.confirm').css('background','pink');
         });
         $('#go').mouseout(function () {
-            $('.confirm').css('background','transparent');
+            $('.confirm').css('background','rgb(255, 255, 255,0.7)');
         });
         $('#back').mouseover(function () {
             $('.confirm').css('background','green');
         });
         $('#back').mouseout(function () {
-            $('.confirm').css('background','transparent');
+            $('.confirm').css('background','rgb(255, 255, 255,0.7)');
         });
     });
 </script>
+<?php
+}
+?>

@@ -29,7 +29,11 @@
 <?php
     }else{
 ?>
-    echo "密碼正確";
+    <p>
+        您好，<?=$_SESSION['name'];?><br>
+        歡迎來到我的線上投票系統。
+    </p>
+    <button><a href="./back/logout.php">登出</a></button>
 <?php
     }
 ?>

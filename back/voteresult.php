@@ -61,5 +61,13 @@ $options=all("options",['voteid'=>$_GET['id']]);
         ?>
     </table>
                                  <!--在按鈕上建立點擊事件並帶入主題id-->
+<?php
+    if(!isset($_SESSION['name'])){
+        echo "<p style='color:red;font-weight:bold;'>請先登入再投票!!</p>";
+    }else{
+?>                             
     <button class="btn" onclick="location.href='?do=vote&id=<?=$_GET['id'];?>'">我要投票</button>
+<?php
+}
+?>
 </div>

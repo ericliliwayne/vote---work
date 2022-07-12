@@ -1,12 +1,14 @@
 <?php
 include_once "./other/functionall.php";
+if(!isset($_SESSION['name'])){
+    header("location:./index.php");
+}else{
 
 //取得主題資料
 $subject=find("votes",$_GET['id']);
 
 //取得選項資料
 $options=all('options',['voteid'=>$_GET['id']]);
-
 ?>
 
 <h1><?=$subject['votename'];?></h1>
@@ -33,8 +35,10 @@ foreach($options as $option){
 <?php
 }
 ?>
-
 <input type="submit" value="投票去">
 <input type="reset" value="重置">
 <input type="button" value="放棄" onclick="location.href='index.php'">
 </form>
+<?php
+}
+?>
