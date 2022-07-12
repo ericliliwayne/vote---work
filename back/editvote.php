@@ -1,3 +1,18 @@
+<style>
+    .edit{
+        width: 30%;
+        margin: 20px auto;
+        background-color: rgb(255,255,255,0.7);
+        text-align: center;
+        /* font-size: 30px; */
+        padding: 5px;
+        box-shadow: 5px 5px 2px;
+        font-size: 15px;
+    }
+    input{
+        font-size: 15px;
+    }
+</style>
 <?php
 //include_once "../other/functionall.php";
 $id = $_GET['id'];
@@ -8,6 +23,7 @@ $options = all('options', ['voteid' => $id]);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <h1>編輯投票</h1>
+<div class="edit">
 <form action="./other/edit_vote.php" method="post">
     <div>
         <label for="subject">投票主題：</label>
@@ -87,3 +103,4 @@ $options = all('options', ['voteid' => $id]);
     <input type="submit" value="修改">
 
 </form>
+</div>

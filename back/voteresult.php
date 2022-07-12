@@ -1,5 +1,5 @@
 <?php
-$color = ['lightblue','lightgreen','lightgray','lightcyan','lightpink','lightyellow','aquamarine','burlywood','darkturquoise','gold','khaki','orange'];
+$color = ['lightblue','lightgreen','lightgray','cadetblue','lightpink','lightyellow','aquamarine','burlywood','darkturquoise','gold','khaki','orange'];
 ?>
 <style>
     
@@ -22,6 +22,7 @@ $color = ['lightblue','lightgreen','lightgray','lightcyan','lightpink','lightyel
     }
     .btn{
         margin: 20px auto;
+        color: cadetblue;
     }
 </style>
 <?php
@@ -51,7 +52,7 @@ $options=all("options",['voteid'=>$_GET['id']]);
             <td><?=$option['total'];?></td>
             <td class="per">
                                                  <!--利用css屬性來建立一個長條bar，並代入投票比例來計算長度-->
-                <div style="display:inline-block;height:24px;background-color:<?=$color[rand(0,12)]?>;width:<?=300*$rate;?>px;margin-left:0px; z-index:-1;" class="bar"><span style = "z-index:99" class="bar"><?=($rate*100) . "%";?></span></div>
+                <div style="display:inline-block;height:24px;background-color:<?=$color[rand(0,11)]?>;width:<?=300*$rate;?>px;margin-left:0px; z-index:-1;" class="bar"><span style = "z-index:99" class="bar"><?=($rate*100) . "%";?></span></div>
                 
             </td>
         </tr>
