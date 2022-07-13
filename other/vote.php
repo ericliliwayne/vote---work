@@ -30,14 +30,11 @@ if (isset($_POST['option'])) {
             }
         }
 
-        //     //將投票資料寫入log,如果投票人未登入，則user_id欄位寫0，否則記錄存在session中的user id
-        //     $log = ['user_id' => (isset($_SESSION['user'])) ? $_SESSION['user'] : 0,
-        //         'subject_id' => $subject['id'],
-        //         'option_id' => $option['id']];
-            
-        //     //儲存投票紀錄
-        //     save("logs", $log);
-        // }
+        //將投票資料寫入voted,記錄使用者的ip位置和投票項目ID來做為避免重複投票的依據
+        $log = ['usersip' => GetIP(),
+        'votesid' => $subject['id'],];
+        //儲存投票紀錄
+        save("voted", $log);
 
     } else {
         //如果是單選，則直接取出選項資料
@@ -58,12 +55,11 @@ if (isset($_POST['option'])) {
         //儲存主題
         save("votes", $subject);
 
-    //     //紀錄投票紀錄
-    //     $log = ['user_id' => (isset($_SESSION['user'])) ? $_SESSION['user'] : 0,
-    //         'subject_id' => $subject['id'],
-    //         'option_id' => $option['id']];
-    //     save("logs", $log);
-    // }
+   //將投票資料寫入voted,記錄使用者的ip位置和投票項目ID來做為避免重複投票的依據
+   $log = ['usersip' => GetIP(),
+   'votesid' => $subject['id'],];
+    //儲存投票紀錄
+    save("voted", $log);
 }
 }
 

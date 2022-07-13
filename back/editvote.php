@@ -17,6 +17,16 @@ if(!isset($_SESSION['name'])){
     input{
         font-size: 15px;
     }
+    .submit2{
+        color: darkgreen;
+        background-color: lightgreen;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .submit2:hover{
+        color: lightgreen;
+        background-color: darkgreen;
+    }
 </style>
 <?php
 //include_once "../other/functionall.php";
@@ -105,7 +115,7 @@ $options = all('options', ['voteid' => $id]);
     <input type="radio" name="show" value="0" <?= ($subject['show'] == 0) ? 'checked' : ''; ?>>
     <label>關閉</label>
     <br>
-    <input type="submit" value="修改">
+    <input type="submit" value="修改" class="submit2">
 
 </form>
 </div>

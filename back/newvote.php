@@ -1,3 +1,15 @@
+<style>
+    .submit2{
+        color: darkgreen;
+        background-color: lightgreen;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .submit2:hover{
+        color: lightgreen;
+        background-color: darkgreen;
+    }
+</style>
 <?php
 if(!isset($_SESSION['name'])){
     header("location:./index.php");
@@ -8,7 +20,7 @@ if(!isset($_SESSION['name'])){
         width: 30%;
         margin: 20px auto;
         background-color: rgb(255,255,255,0.7);
-        text-align: center;
+        text-align: left;
         /* font-size: 30px; */
         padding: 5px;
         box-shadow: 5px 5px 2px;
@@ -89,7 +101,7 @@ $options = all('options');
     <label>關閉</label>
     <br>
     <p>&nbsp;</p>
-    <input type="submit" value="新增投票">
+    <input type="submit" value="新增投票" class="submit2">
 
 </form>
 </div>

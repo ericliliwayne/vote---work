@@ -1,7 +1,17 @@
+<style>
+    .to{
+        font-size: 30px;
+        text-decoration: none;
+        color: darkred;
+    }
+    .to:hover{
+        font-size: 50px;
+    }
+</style>
 <!-- 首頁menu區 -->
 <div>
-    <a href="index.php">回首頁</a>
-    <a href="">投票</a>
-    <a href="?do=membercenter">會員中心</a>
-    <a href="?do=newvote">新增投票</a>
+    <a href="index.php" class="to">回首頁</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- <a href="">投票</a> -->
+    <a href="?do=membercenter" class="to">會員中心</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="?do=newvote" class="to">新增投票</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>

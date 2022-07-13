@@ -20,9 +20,17 @@ $color = ['lightblue','lightgreen','lightgray','cadetblue','lightpink','lightyel
         text-align:left;
         border-left:2px solid black;
     }
-    .btn{
+    .btn2{
         margin: 20px auto;
-        color: cadetblue;
+        color:darkblue;
+        background-color: lightblue;
+        font-size: larger;
+        cursor: pointer;
+    }
+    .btn2:hover{
+        color:lightblue;
+        background-color: darkblue;
+        font-size: larger;
     }
 </style>
 <?php
@@ -69,7 +77,7 @@ $options=all("options",['voteid'=>$_GET['id']]);
         echo "<p style='color:red;font-weight:bold;'>投票時間已結束!!</p>";
     }else{
 ?>                             
-    <button class="btn" onclick="location.href='?do=vote&id=<?=$_GET['id'];?>'">我要投票</button>
+    <button class="btn2" onclick="location.href='?do=vote&id=<?=$_GET['id'];?>'">我要投票</button>
 <?php
 }
 ?>

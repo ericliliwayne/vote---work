@@ -17,6 +17,26 @@ if(!isset($_SESSION['name'])){
     input{
         font-size: 15px;
     }
+    .submit2{
+        color: darkgreen;
+        background-color: lightgreen;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .reset2{
+        color: darkblue;
+        background-color: lightblue;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .submit2:hover{
+        color: lightgreen;
+        background-color: darkgreen;
+    }
+    .reset2:hover{
+        color: lightblue;
+        background-color: darkblue;
+    }
 </style>
 <?php
 //include_once "../other/functionall.php";
@@ -82,8 +102,8 @@ $mem = find('users', ['name' => $_SESSION['name']]);
         <textarea name="pwnote" id="pwnote" cols="30" rows="10"><?= $mem['pwnote']; ?></textarea>
     </div>
     <p>&nbsp;</p>
-    <input type="submit" value="修改">
-    <input type="reset" value="重置">
+    <input type="submit" value="修改" class="submit2">
+    <input type="reset" value="重置" class="reset2">
     
 
 </form>

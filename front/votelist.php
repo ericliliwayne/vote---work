@@ -88,6 +88,7 @@
             $category=all('categorys');
             
             //使用迴圈將每一筆資料的內容顯示在畫面上
+            
             foreach($subjects as $subject){
                 echo "<a href='?do=voteresult&id={$subject['id']}'>";
                 //判定類ID來賦與對應的CSS美化
@@ -110,80 +111,82 @@
                     $border = 'colorf';
                     $string = "其他";
                 }
-
-                if($_GET['filter'] == 0     || !isset($_GET['filter'])){
-                    echo "<div class='voteslist {$border}'>";
-                    echo "<div class='votestitle'>{$subject['votename']}</div>";
-                    echo "<div>類別 : ".$string."</div>";
-                    if($subject['multiples']==1){
-                        echo "<div class='text-center'>單/複選題 : 複選題</div>";
-                    }else {
-                        echo "<div class='text-center'>單/複選題 : 單選題</div>";
-                    }
-                    echo "<div class='text-center'>";
-                    echo "投票期間為 : ".$subject['start']. " ~ ".$subject['end'];
-                    echo "</div>";
-                    echo "<div class='text-center'>";
-                        $today=strtotime("now");
-                        $end=strtotime($subject['end']);
-                        if(($end-$today)>0){
-                            $remain=floor(($end-$today)/(60*60*24));
-                            echo "倒數".$remain."天結束";
-                        }else{
-                            echo "<span style='color:grey'>投票已結束</span>";
+                if($subject['show']==1){
+                    if($_GET['filter'] == 0     || !isset($_GET['filter'])){
+                        echo "<div class='voteslist {$border}'>";
+                        echo "<div class='votestitle'>{$subject['votename']}</div>";
+                        echo "<div>類別 : ".$string."</div>";
+                        if($subject['multiples']==1){
+                            echo "<div class='text-center'>單/複選題 : 複選題</div>";
+                        }else {
+                            echo "<div class='text-center'>單/複選題 : 單選題</div>";
                         }
-                    
-                    echo "</div>";
-                    echo "<div class='text-center'>已投票人數 : {$subject['total']}</div>";
-                    echo "</div>";
-                    echo "</a>";
-                }
-                
-                if(isset($_GET['filter']) && $_GET['filter']==$subject['categoryid']){
-                    echo "<div class='voteslist {$border}'>";
-                    echo "<div class='votestitle'>{$subject['votename']}</div>";
-                    echo "<div>類別 : ".$string."</div>";
-                    if($subject['multiples']==1){
-                        echo "<div class='text-center'>單/複選題 : 複選題</div>";
-                    }else{
-                        echo "<div class='text-center'>單/複選題 : 單選題</div>";
+                        echo "<div class='text-center'>";
+                        echo "投票期間為 : ".$subject['start']. " ~ ".$subject['end'];
+                        echo "</div>";
+                        echo "<div class='text-center'>";
+                            $today=strtotime("now");
+                            $end=strtotime($subject['end']);
+                            if(($end-$today)>0){
+                                $remain=floor(($end-$today)/(60*60*24));
+                                echo "倒數".$remain."天結束";
+                            }else{
+                                echo "<span style='color:grey'>投票已結束</span>";
+                            }
+                        
+                        echo "</div>";
+                        echo "<div class='text-center'>已投票人數 : {$subject['total']}</div>";
+                        echo "</div>";
+                        echo "</a>";
                     }
-                    echo "<div class='text-center'>";
-                    echo "投票期間為 : ".$subject['start']. " ~ ".$subject['end'];
-                    echo "</div>";
-                    echo "<div class='text-center'>";
-                        $today=strtotime("now");
-                        $end=strtotime($subject['end']);
-                        if(($end-$today)>0){
-                            $remain=floor(($end-$today)/(60*60*24));
-                            echo "倒數".$remain."天結束";
-                        }else{
-                            echo "<span style='color:grey'>投票已結束</span>";
-                        }
                     
-                    echo "</div>";
-                    echo "<div class='text-center'>已投票人數 : {$subject['total']}</div>";
-                    echo "</div>";
-                    echo "</a>";
+                    if(isset($_GET['filter']) && $_GET['filter']==$subject['categoryid']){
+                        echo "<div class='voteslist {$border}'>";
+                        echo "<div class='votestitle'>{$subject['votename']}</div>";
+                        echo "<div>類別 : ".$string."</div>";
+                        if($subject['multiples']==1){
+                            echo "<div class='text-center'>單/複選題 : 複選題</div>";
+                        }else{
+                            echo "<div class='text-center'>單/複選題 : 單選題</div>";
+                        }
+                        echo "<div class='text-center'>";
+                        echo "投票期間為 : ".$subject['start']. " ~ ".$subject['end'];
+                        echo "</div>";
+                        echo "<div class='text-center'>";
+                            $today=strtotime("now");
+                            $end=strtotime($subject['end']);
+                            if(($end-$today)>0){
+                                $remain=floor(($end-$today)/(60*60*24));
+                                echo "倒數".$remain."天結束";
+                            }else{
+                                echo "<span style='color:grey'>投票已結束</span>";
+                            }
+                        
+                        echo "</div>";
+                        echo "<div class='text-center'>已投票人數 : {$subject['total']}</div>";
+                        echo "</div>";
+                        echo "</a>";
+                    }
+                    
                 }
-                
             }
-            
-            
-        ?>
-        </session>
-        <div class="text-center">
-        <?php
-        //在列表下方顯示頁碼及連結
-        if ($pages > 1) {
-            for ($i = 1; $i <= $pages; $i++) {
                 
-                //同時帶入網址的分頁及排序參數，用edfrdcvf憶頁面行為的狀態
-                echo "<a href='?page={$i}{$sortstr}{$sortfilter}'>&nbsp;";
-                echo $i;
-                echo "&nbsp;</a>";
+            ?>
+            </session>
+            <div class="text-center">
+            <?php
+            //在列表下方顯示頁碼及連結
+            if ($pages > 1) {
+                for ($i = 1; $i <= $pages; $i++) {
+                    
+                    //同時帶入網址的分頁及排序參數，用edfrdcvf憶頁面行為的狀態
+                    //echo "<a href='?page={$i}{$sortstr}{$sortfilter}'>&nbsp;";
+                    //echo $i;
+                    //echo "&nbsp;</a>";
+                }
             }
-        }
+               
+                
 
 ?>
     </div>    
