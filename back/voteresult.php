@@ -28,6 +28,7 @@ $color = ['lightblue','lightgreen','lightgray','cadetblue','lightpink','lightyel
 <?php
 //取得主題資料
 $subject=find("votes",$_GET['id']);
+$now = date('Y-m-d H-i-s');
 
 //取得主題所屬的所有選項資料
 $options=all("options",['voteid'=>$_GET['id']]);
@@ -64,6 +65,8 @@ $options=all("options",['voteid'=>$_GET['id']]);
 <?php
     if(!isset($_SESSION['name'])){
         echo "<p style='color:red;font-weight:bold;'>請先登入再投票!!</p>";
+    }else if($subject['end'] <= $now){
+        echo "<p style='color:red;font-weight:bold;'>投票時間已結束!!</p>";
     }else{
 ?>                             
     <button class="btn" onclick="location.href='?do=vote&id=<?=$_GET['id'];?>'">我要投票</button>

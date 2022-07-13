@@ -70,13 +70,16 @@
                     $filter = ['categoryid' => $_GET['filter']];
                 }
             }
-            $total = math('votes', 'count', 'id');  //計算指定條件的資料總筆數
+            $total = math('votes', 'count', 'id',$filter);  //計算指定條件的資料總筆數
             echo $total;
             $div = 6;                                           //每頁資料筆數
             $pages = ceil($total / $div);                       //計算總頁數
             $now = isset($_GET['page']) ? $_GET['page'] : 1;          //從網址參數取得目前所在頁數
             $start = ($now - 1) * $div;                         //計算要從那個索引開始取得資料
             $page_rows = " limit $start,$div";                  //建立SQL語法的limit字串
+            //使用all()函式來取得資料表votes中的所有資料，請參考base.php中的函式all($table,...$arg)
+            //$subjects = all('votes', $filter, $sortstr . $page_rows);
+
 ?>
 <session class='card'>
         <?php

@@ -4,6 +4,67 @@
         text-align: center;
         margin: 10px;
     }
+    .sidebar{
+        background-color: rgb(255, 255, 255,0.5);
+        padding: 1px;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    input{
+        font-size: 15px;
+    }
+    .fn{
+        color: black;
+        text-decoration: none;
+    }
+    .fn:hover{
+        color: gold;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .submit{
+        font-size: 20px;
+        color: red;
+        border-radius: 20% 20%;
+    }
+    .submit:hover{
+        font-size: 20px;
+        color: white;
+        background-color: red;
+        cursor: pointer;
+    }
+    .reset{
+        font-size: 20px;
+        color: blue;
+        border-radius: 20% 20%;
+    }
+    .reset:hover{
+        font-size: 20px;
+        color: white;
+        background-color: blue;
+        cursor: pointer;
+    }
+    .in{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+    .logout{
+        margin: 20px auto;
+        width:50%;
+        font-size: 25px;
+    }
+    .out{
+        text-decoration: none;
+        color: black;
+    }
+    .logout:hover{
+        background-color: darkred;
+    }
+    .out:hover{
+        color:gold;
+    }
 </style>
 <?php
     $user = all('users');
@@ -11,29 +72,32 @@
 ?>
 <div class="sidebar">
     <form action="./other/check.php" method="post" style="text-align: center;">
-        <p style="text-align: center;font-size:large;margin-top:10px">會員登入</p>
+        <p style="text-align: center;font-size:large;margin-top:10px;font-size:30px;font-weight:bolder;text-decoration:underline;color:indigo">會員登入</p>
         <lable>帳號:
             <input type="text" name="acc" id="acc">
         </lable><br><br>
         <lable>密碼:
             <input type="password" name="pw" id="pw">
         </lable><br><br>
-        <a href="?do=forget">忘記密碼</a>
+        <a href="?do=forget" class="fn">忘記密碼</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="?do=register">註冊會員</a><br><br>
-        <button type="submit">會員登入</button>
+        <a href="?do=register" class="fn">註冊會員</a><br><br>
+        <button type="submit" class="submit">會員登入</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="reset">清除重填</button>
+        <button type="reset" class="reset">清除重填</button>
     </form>
 </div>
 <?php
     }else{
 ?>
-    <p>
-        您好，<?=$_SESSION['name'];?><br>
+    <div class="in">
+    <p style="padding:1px;text-align:center;margin:20px 10px 10px 10px;height:30%;font-size:20px;color:red;background:rgb(255, 255, 255,0.5)">
+        您好，<span style="color:gold;font-weight:bold;font-size:30px;"><?=$_SESSION['name'];?></span><br>
         歡迎來到我的線上投票系統。
     </p>
-    <button><a href="./back/logout.php">登出</a></button>
+    <button class="logout"><a href="./back/logout.php" class="out">會員登出</a></button>
+    </div>
+    
 <?php
     }
 ?>

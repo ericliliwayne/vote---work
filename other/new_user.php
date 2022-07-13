@@ -2,6 +2,7 @@
     body{
         display: flex;
         flex-direction: column;
+        background-color: black;
     }
     h1{
         text-align: center;
@@ -19,6 +20,9 @@
 <?php
 include_once "functionall.php";
 //接收來自表單傳來的投票主題文字內容
+$users = find('users', ['name' => $_POST['name']]);
+$users2 = find('users', ['acc' => $_POST['acc']]);
+
 $newname=$_POST['name'];
 $newacc=$_POST['acc'];
 $newpw=md5($_POST['pw']);
@@ -33,6 +37,12 @@ echo "<p>&nbsp;</p>";
 echo "<h1>密碼和確認密碼不一致，請重新輸入!!<h1><br>";
 echo "<button><a href='../index.php?do=register'>回註冊頁面</a></button>";
     
+}
+if($newname==$users['name'] || $newacc==$users2['acc']){
+    echo "<p>&nbsp;</p>";
+    echo "<p>&nbsp;</p>";
+    echo "<h1>輸入的帳號或名稱有重複，請重新輸入!!<h1><br>";
+    echo "<button><a href='../index.php?do=register'>回註冊頁面</a></button>";
 }else{
     $add_subject=[
         'name'=>$newname,
@@ -47,6 +57,7 @@ echo "<button><a href='../index.php?do=register'>回註冊頁面</a></button>";
     save('users',$add_subject);
     to('../index.php');
 }
+
 
 
 

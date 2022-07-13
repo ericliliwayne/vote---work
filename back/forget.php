@@ -14,17 +14,17 @@
         box-shadow: 5px 5px 2px;
         font-size: 15px;
     }
-    label{
-        font-size: 15px;
+    .label{
+        font-size: 25px;
     }
-    input{
-        font-size: 15px;
+    #acc2{
+        font-size: 25px;
     }
     p{
         font-size: 30px;
         margin: 10px auto;
     }
-    .submit{
+    .submit2{
         width: 20%;
         height: 50%;
         background-color: lightblue;
@@ -32,7 +32,7 @@
         margin: 5px 10px;
         font-size: 25px;
     }
-    .reset{
+    .reset2{
         width: 20%;
         height: 50%;
         background-color: lightblue;
@@ -53,11 +53,11 @@
         color: gold;
         font-weight: bold;
     }
-    .submit:hover{
+    .submit2:hover{
         background-color:darkgreen;
         color: lightpink;
     }
-    .reset:hover{
+    .reset2:hover{
         background-color:darkgreen;
         color: lightblue;
     }
@@ -79,11 +79,11 @@ if(!isset($_POST['acc'])){
 <h1 style="font-size: 50px;">找回密碼提示</h1>
 <div class="forget">
 <form action="./?do=forget" method="post">
-    <label for="acc">輸入帳號: </label>
-    <input type="text" name="acc" id="acc" value="" required>
+    <label for="acc" class="label">輸入帳號: </label>
+    <input type="text" name="acc" id="acc2" value="" required>
     <br>
-    <button type="submit" class="submit">送出</button>
-    <button type="reset" class="reset">清除</button>
+    <button type="submit" class="submit2">送出</button>
+    <button type="reset" class="reset2">清除</button>
 </form>
 <p>&nbsp;</p>
 <button class="back"><a href="./index.php" class="a">回首頁</a></button>
