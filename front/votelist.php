@@ -1,3 +1,30 @@
+<style>
+    .card{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: start;
+    align-content: space-around;
+    width: 100%;
+    height: 90%;
+}
+.cate{
+    text-align: center;
+    font-size: 30px;
+}
+#categorys{
+    font-size: 30px;
+}
+    .textcenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .big{
+    font-size: 30px;
+}
+</style>
 <?php
     //include_once "./other/functionall.php";
     //先設定一個空的分頁字串變數
@@ -10,11 +37,6 @@
     }
     //先設定一個空的排序字串變數
     $sortstr = "";
-
-    //如果網址中帶有排序的參數則將變數設為參數的值
-    if (isset($_GET['order'])) {
-        $sortstr = "&order={$_GET['order']}&type={$_GET['type']}";
-    }
 
     //先設定一個空的分類字串變數
     $sortfilter = "";
@@ -31,8 +53,9 @@
     
     
 ?>
-<div>
-    <label for="categorys">分類排序: </label>
+<div class="cate">
+    <label for="categorys
+    ">分類排序: </label>
     <!--建立一個選單事件，當選單被選擇到不一樣的項目時會觸發onchange事件，此事件會在網址中帶入相關的參數-->
     <select name="categorys" id="categorys" onchange="location.href=`?filter=${this.value}<?=$page;?><?=$sortstr;?>`">
         <option value="0">全部</option>
@@ -47,22 +70,12 @@
         }
         ?>
     </select>
-    <?php
-        if (isset($_GET['type']) && $_GET['type'] == 'asc') {
-    ?>
-    <button id="date"><a href="?order=remain&type=desc<?=$page;?><?=$sortfilter;?>">依剩餘日期排序</a></button>
-    <?php
-        } else {
-    ?>
-    <button id="date"><a href="?order=remain&type=asc<?=$page;?><?=$sortfilter;?>">依剩餘日期排序</a></button>
-    <?php
-        }
-    ?>
 </div>
 <?php
             //建立一個分類過濾用的空陣列
             $filter = [];
-
+            $list = all('votes',['show'=>1]);
+            //echo count($list);
             //判斷網址中是否帶有分類參數
             if (isset($_GET['filter'])) {
                 //如果分類項目不是0，則在空陣列中加入分類id
@@ -70,25 +83,27 @@
                     $filter = ['categoryid' => $_GET['filter']];
                 }
             }
-            $total = math('votes', 'count', 'id',$filter);  //計算指定條件的資料總筆數
-            echo $total;
+            $total = count($list);  //計算指定條件的資料總筆數
+            // echo $total;
             $div = 6;                                           //每頁資料筆數
-            $pages = ceil($total / $div);                       //計算總頁數
+            $pages = ceil($total / $div);  
+            // echo $pages;                     //計算總頁數
             $now = isset($_GET['page']) ? $_GET['page'] : 1;          //從網址參數取得目前所在頁數
             $start = ($now - 1) * $div;                         //計算要從那個索引開始取得資料
-            $page_rows = " limit $start,$div";                  //建立SQL語法的limit字串
+            $page_rows = " limit $start,$div";
+            $show = "WHERE `show`='1'";                  //建立SQL語法的limit字串
             //使用all()函式來取得資料表votes中的所有資料，請參考base.php中的函式all($table,...$arg)
-            //$subjects = all('votes', $filter, $sortstr . $page_rows);
+            $subjects = all('votes', $show.$page_rows);
+            
 
 ?>
-<session class='card'>
+<div class='card'>
         <?php
             //使用all()函式來取得資料表votes中的所有資料，請參考functionall.php中的函式all($table,...$arg)
-            $subjects = all('votes');
+            //$subjects = all('votes');
             $category=all('categorys');
             
             //使用迴圈將每一筆資料的內容顯示在畫面上
-            
             foreach($subjects as $subject){
                 echo "<a href='?do=voteresult&id={$subject['id']}'>";
                 //判定類ID來賦與對應的CSS美化
@@ -111,7 +126,7 @@
                     $border = 'colorf';
                     $string = "其他";
                 }
-                if($subject['show']==1){
+                //if($subject['show']==1){
                     if($_GET['filter'] == 0     || !isset($_GET['filter'])){
                         echo "<div class='voteslist {$border}'>";
                         echo "<div class='votestitle'>{$subject['votename']}</div>";
@@ -169,24 +184,36 @@
                     }
                     
                 }
-            }
-                
-            ?>
-            </session>
-            <div class="text-center">
-            <?php
+                ?>
+                <p>&nbsp;</p>
+            
+        
+    </div>   
+    <div class="textcenter">
+                <?php
             //在列表下方顯示頁碼及連結
             if ($pages > 1) {
+                if($_GET['page']>1){
+            ?>
+                    <a href="index.php?page=<?=$now-1;?>"> < </a>
+            <?php
+                }
+                echo "&nbsp;&nbsp;";
                 for ($i = 1; $i <= $pages; $i++) {
                     
-                    //同時帶入網址的分頁及排序參數，用edfrdcvf憶頁面行為的狀態
-                    //echo "<a href='?page={$i}{$sortstr}{$sortfilter}'>&nbsp;";
-                    //echo $i;
-                    //echo "&nbsp;</a>";
+                    //同時帶入網址的分頁及排序參數
+                    $fon = ($i==$_GET['page'])?'big':'';
+                    echo "<a href='?page={$i}{$sortstr}{$sortfilter}'>&nbsp;";
+                    echo "<span class=$fon>".$i."</span>";
+                    echo "&nbsp;</a>";
+                }
+                echo"<br>";
+                echo "&nbsp;&nbsp;";
+                if($_GET['page']<$pages){
+            ?>
+                    <a href="index.php?page=<?=$now+1;?>"> > </a>
+            <?php
                 }
             }
-               
-                
-
-?>
-    </div>    
+            ?>
+        </div> 

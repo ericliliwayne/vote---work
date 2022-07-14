@@ -4,6 +4,12 @@ if(!isset($_SESSION['name'])){
 }else{
 ?>
 <style>
+    .list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
     table{
         border: 2px solid black;
         margin: 10px auto;
@@ -34,9 +40,23 @@ if(!isset($_SESSION['name'])){
         cursor: pointer;
         
     }
-    
+    .btn3{
+        background-color: lightgreen;
+        margin: 5px auto;
+    }
+    .btn3:hover{
+        background-color: darkgreen;
+    }
+    .a3{
+        color: green;
+        font-size: 30px;
+    }
+    .a3:hover{
+        color: lightgreen;
+    }
 </style>
 <h1>後台投票項目列表</h1>
+<div class="list">
 <?php
             //使用all()函式來取得資料表votes中的所有資料，請參考functionall.php中的函式all($table,...$arg)
             $subjects=all('votes');
@@ -105,7 +125,8 @@ if(!isset($_SESSION['name'])){
             echo "</table>";
         ?>
 
-        <button><a href="index.php">返回首頁</a></button>
+        <button class="btn3"><a href="index.php" class="a3">返回首頁</a></button>
         <?php
         }
         ?>
+        </div>

@@ -41,6 +41,11 @@
         color: gold;
         background-color: darkred;
     }
+    .voted{
+        font-size: 30px;
+        color: lightcoral;
+        font-weight: bold;
+    }
 </style>
 <?php
 include_once "./other/functionall.php";
@@ -51,14 +56,18 @@ if(!isset($_SESSION['name'])){
 //取得主題資料
 $subject=find("votes",$_GET['id']);
 $ip = GetIP();
-$now = date('y-m-d');
+$now = date('Y-m-d');
 $note = find('voted',['votesid'=>$_GET['id']]);
 $id = $_GET['id'];
-// $pdo=pdo();
-// $query = "select count(*) form voted where `ip`='$ip' AND `votetime`='$now' AND `votesid`='$id'";
+$pdo=pdo();
+//$query = "SELECT count(*) FROM `voted` WHERE `usersip`= '?' AND `votesid`='?' AND `votetime` = '?'";
+$query2 = "SELECT count(*) FROM `voted` WHERE `usersip`= '$ip' AND `votesid`='$id' AND `votetime` = '$now'";
+//echo $query2;
 // $stmt = $pdo->prepare($query);
-// $stmt = $pdo->execute($query);
-// $vote_num = $stmt->fetchColumn();
+// $stmt->execute([$ip,$id,$now]);
+$stmt = $pdo->query($query2);
+$vote_num = $stmt->fetchColumn();
+//echo $vote_num;
 
 //取得選項資料
 $options=all('options',['voteid'=>$_GET['id']]);
@@ -69,6 +78,7 @@ $options=all('options',['voteid'=>$_GET['id']]);
 <form action="./other/vote.php" method="post">
     <input type="hidden" name="id" value="<?= $subject['id']; ?>">
 <?php
+if($vote_num==0){
 foreach($options as $option){
 ?>
     
@@ -89,14 +99,13 @@ foreach($options as $option){
 
 <?php
 }
-//if($ip==$note['usersip'] && $now==$note['votetime'] && $id==$note['votesid']){
-   // echo "<p>今日已投過票，請明日再來~</p>";
 
-//}else{
 ?>
-    <input type="submit" value="投票去" class="submit2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit" value="投票去" class="submit2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php
-//}
+}else{
+    echo "<p class='voted'>今日已投過票，請明日再來~</p>";
+}
 ?>
 
 <input type="reset" value="重置" class="reset2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

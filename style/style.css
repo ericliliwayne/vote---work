@@ -60,13 +60,12 @@ section{
         background-attachment: fixed;
 }
 
-.card{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-content: space-around;
+
+
+.textcenter{
     width: 100%;
-    height: 100%;
+    text-align: center;
+    display: block;
 }
 
 .voteslist{
@@ -139,4 +138,7 @@ section{
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: bold;
+}
+.big{
+    font-size: larger;
 }

@@ -5,7 +5,7 @@
         color: darkred;
     }
     .to:hover{
-        font-size: 50px;
+        background-color: lightblue;
     }
 </style>
 <!-- 首頁menu區 -->
