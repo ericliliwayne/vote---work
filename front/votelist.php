@@ -29,12 +29,11 @@
     //include_once "./other/functionall.php";
     //先設定一個空的分頁字串變數
     $page = "";
-    
-
         //如果網址中帶有分頁的參數則將變數設為參數的值
     if (isset($_GET['page'])) {
         $page = "&page={$_GET['page']}";
     }
+    
     //先設定一個空的排序字串變數
     $sortstr = "";
 
@@ -86,8 +85,8 @@
             $total = count($list);  //計算指定條件的資料總筆數
             // echo $total;
             $div = 6;                                           //每頁資料筆數
-            $pages = ceil($total / $div);  
-            // echo $pages;                     //計算總頁數
+            $pages = ceil($total / $div);  //計算總頁數
+            // echo $pages;                     
             $now = isset($_GET['page']) ? $_GET['page'] : 1;          //從網址參數取得目前所在頁數
             $start = ($now - 1) * $div;                         //計算要從那個索引開始取得資料
             $page_rows = " limit $start,$div";
@@ -191,9 +190,10 @@
     </div>   
     <div class="textcenter">
                 <?php
+                
             //在列表下方顯示頁碼及連結
             if ($pages > 1) {
-                if($_GET['page']>1){
+                if($now>1){
             ?>
                     <a href="index.php?page=<?=$now-1;?>"> < </a>
             <?php
@@ -202,18 +202,19 @@
                 for ($i = 1; $i <= $pages; $i++) {
                     
                     //同時帶入網址的分頁及排序參數
-                    $fon = ($i==$_GET['page'])?'big':'';
-                    echo "<a href='?page={$i}{$sortstr}{$sortfilter}'>&nbsp;";
+                    $fon = ($i==$now)?'big':'';
+                    echo "<a href='?page={$i}'>";
                     echo "<span class=$fon>".$i."</span>";
                     echo "&nbsp;</a>";
                 }
                 echo"<br>";
                 echo "&nbsp;&nbsp;";
-                if($_GET['page']<$pages){
+                if($now<$pages){
             ?>
                     <a href="index.php?page=<?=$now+1;?>"> > </a>
             <?php
                 }
             }
+            
             ?>
         </div> 
