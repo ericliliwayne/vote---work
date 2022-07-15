@@ -41,7 +41,7 @@ $now = date('Y-m-d H-i-s');
 //取得主題所屬的所有選項資料
 $options=all("options",['voteid'=>$_GET['id']]);
 ?>
-                <!--顯示主題文字-->
+<!--顯示主題文字-->
 <h1 class="text-center"><?=$subject['votename'];?></h1>
 <div style="width:600px;margin:auto;background:rgb(255,255,255,0.6);text-align:center">
     <div style="margin: 20px auto;color:red;font-size:20px;font-weight:bold;">總投票數: <?=$subject['total'];?></div>
@@ -69,7 +69,7 @@ $options=all("options",['voteid'=>$_GET['id']]);
         }
         ?>
     </table>
-                                 <!--在按鈕上建立點擊事件並帶入主題id-->
+<!--在按鈕上建立點擊事件並帶入主題id-->
 <?php
     if(!isset($_SESSION['name'])){
         echo "<p style='color:red;font-weight:bold;'>請先登入再投票!!</p>";

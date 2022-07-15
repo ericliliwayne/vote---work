@@ -64,7 +64,7 @@ $subject=find("votes",$_GET['id']);
     <h2 style="text-align:center;color:red;font-weight:bolder;font-size:70px;">你確定要刪除這份投票嗎?</h2>
     <div style="text-align:center;font-weight:bold;font-size:50px;">主題:</div>
     <p>&nbsp;</p>
-                                                <!--顯示主題內容做為確認之用-->
+    <!--顯示主題內容做為確認之用-->
     <div style="font-size:1.5rem;text-align:center;font-size:30px;"><?=$subject['votename'];?></div>
     <!--根據使用者選擇的按鈕不同，將使用者導向刪除或回首頁-->
     <p>&nbsp;</p><p>&nbsp;</p>

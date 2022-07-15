@@ -65,7 +65,7 @@ $user=find("users",['name'=>$_SESSION['name']]);
     <h2 style="text-align:center;color:red;font-weight:bolder;font-size:70px;">你確定要刪除這帳號嗎?</h2>
     <div style="text-align:center;font-weight:bold;font-size:50px;">帳號名稱:</div>
     <p>&nbsp;</p>
-                                                <!--顯示主題內容做為確認之用-->
+    <!--顯示主題內容做為確認之用-->
     <div style="font-size:1.5rem;text-align:center;font-size:30px;"><?=$user['acc'];?></div>
     <!--根據使用者選擇的按鈕不同，將使用者導向刪除或回首頁-->
     <p>&nbsp;</p><p>&nbsp;</p>

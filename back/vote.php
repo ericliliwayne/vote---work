@@ -83,7 +83,7 @@ foreach($options as $option){
 ?>
     
         <?php
-        //根據主題資料的multiple來決定這邊要顯示的是radio單選按鈕還是checked複選按鈕
+        //根據主題資料的multiples來決定這邊要顯示的是radio單選按鈕還是checked複選按鈕
          if($subject['multiples']==0){
         ?>
             <input type="radio" name="option" value="<?=$option['id'];?>">

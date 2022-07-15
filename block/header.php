@@ -1,4 +1,3 @@
-<!-- 圖片區 -->
 <?php
 $color = ['lightblue','lightgreen','lightyellow','lightpink','lightskyblue','lightgray','lightsalmon','chartreuse','mediumaquamarine'];
 ?>

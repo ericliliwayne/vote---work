@@ -91,7 +91,7 @@
             $start = ($now - 1) * $div;                         //計算要從那個索引開始取得資料
             $page_rows = " limit $start,$div";
             $show = "WHERE `show`='1'";                  //建立SQL語法的limit字串
-            //使用all()函式來取得資料表votes中的所有資料，請參考base.php中的函式all($table,...$arg)
+            //使用all()函式來取得資料表votes中指定的所有資料，請參考base.php中的函式all($table,...$arg)
             $subjects = all('votes', $show.$page_rows);
             
 
@@ -200,8 +200,6 @@
                 }
                 echo "&nbsp;&nbsp;";
                 for ($i = 1; $i <= $pages; $i++) {
-                    
-                    //同時帶入網址的分頁及排序參數
                     $fon = ($i==$now)?'big':'';
                     echo "<a href='?page={$i}'>";
                     echo "<span class=$fon>".$i."</span>";
